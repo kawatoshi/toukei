@@ -10,6 +10,15 @@ def touroku
 	puts "enter"
 	puts "700"
 end
+def kensaku
+	puts <<"COMMAND1"
+key #{b_id}
+Enter
+Enter
+Enter
+1000
+COMMAND1
+end
 
 open(ARGV[0].chomp, 'r') do |io|
 	tatemono = Inputkey::Inputkey.new("")
@@ -21,13 +30,7 @@ open(ARGV[0].chomp, 'r') do |io|
 		tatemono.set_source(ary[2], ary[2])
 		tatemono_kana.set_source(ary[4], ary[4])
 		tatemono_ryaku.set_source(ary[5], ary[5])
-		puts <<"COMMAND1"
-key #{b_id}
-Enter
-Enter
-Enter
-1000
-COMMAND1
+		kensaku
 		tatemono.kanakan
 		tatemono.enter
 		tatemono_kana.kana
