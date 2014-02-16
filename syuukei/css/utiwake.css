@@ -1,0 +1,43 @@
+#contents {
+	width:900;
+}
+div.title * {
+	font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;
+	font-style: normal;
+	font-weight: normal;
+}
+div.title h1 {
+	font-size: 22px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+div.title h2 {
+	font-size:14px;
+	background-color:#12DFF0;
+	margin-left:100px;
+	margin-bottom:5px;
+	width:250px;
+	float:left;
+}
+body table tr th {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 14px;
+}
+td {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px;
+}
+table #total {
+	font-size: 14px;
+}
+.yen {
+	text-align: right;
+	padding-right: 5px;
+}
+.num {
+	text-align: center;
+}
+#table-border {
+	border-collapse:collapse;
+	border:2px solid #6A6A6A;
+}
