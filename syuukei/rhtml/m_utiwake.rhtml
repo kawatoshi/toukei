@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<title>管球一覧</title>
+<link rel="stylesheet" href="../css/utiwake.css" type="text/css" />
+</head>
+<div id="contents">
+  <body>
+  <div class="title">
+		<h1><%= u.getudo %>　　<%= cgi["honten"] %><%= u.customer %>様　　管球類請求内訳</h1>
+		<h2>営業所: <%= u.division %></h2>
+    <h2 style="margin-left:50px;">※価格は全て税抜きとなっております</h2>
+  </div>
+  <table style="clear:both;" id="table-border" width="560" border="1" align="center">
+    <tr id="table-border">
+      <th scope="col">交換日</th>
+      <th scope="col">売場名</th>
+      <th scope="col">品番</th>
+      <th scope="col">単価</th>
+      <th scope="col">数量</th>
+      <th scope="col">金額</th>
+    </tr>
+		<%- u.lines.each{|line| -%>
+				<tr>
+				<td><%= line.day %></td>
+				<td><%= line.place %></td>
+				<td><%= line.item %></td>
+				<td class="yen"><%= camma(line.price) %></td>
+				<td class="num"><%= camma(line.units) %></td>
+				<td class="yen"><%= camma(line.sum) %></td>
+    	</tr>
+		<%- } -%>
+    <tr id="table-border">
+      <th colspan="5">合計(税抜き)</th>
+			<td class="yen"><%= camma(u.total_plice) %></td>
+    </tr>
+  </table>
+  </body>
+</div>
+</html>
