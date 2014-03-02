@@ -46,13 +46,13 @@ module Buppan
 		def line(line_data)
 			utiwakeline = Struct.new(:day,
 															 :customer_name, :place,
-															 :code,
+															 :code, :uriba,
 															 :item,
 															 :price, :units,
 															 :sum, :cost)
 			utiwakeline.new(parsedate(line_data[5]),
 											line_data[2], line_data[6],
-											get_code(line_data[2]),
+											get_code(line_data[2]), get_uriba(line_data[2]),
 											line_data[7],
 											decamma(line_data[8]), decamma(line_data[9]),
 											decamma(line_data[10]), decamma(line_data[11]))
@@ -76,6 +76,15 @@ module Buppan
 			code = str.split
 			if code[0] =~ /\A\d\d\d\d\d\d\Z/
 				code[0]
+			end
+		end
+		def get_uriba(str)
+			if get_code(str)
+				ans = str.split
+				ans.delete_at(0)
+				ans.join(" ")
+			else
+				str
 			end
 		end
 	end
