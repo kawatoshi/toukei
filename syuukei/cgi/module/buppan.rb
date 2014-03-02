@@ -22,7 +22,7 @@ module Buppan
 		def getudo
 			"平成#{@bill_month.year - 1988}年#{@bill_month.month}月度"
 		end
-		def total_plice
+		def total_price
 			@utiwake_list.inject(0){|sum, line|
 				sum + line.sum
 			}
@@ -33,7 +33,7 @@ module Buppan
 			}
 		end
 		def total_gain
-			total_plice - total_cost
+			total_price - total_cost
 		end
 
 		private
