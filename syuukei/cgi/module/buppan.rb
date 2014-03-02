@@ -99,6 +99,15 @@ module Buppan
 			list2 = find_row_nums(1, siten_id)
 			utiwake(list1 & list2, utiwake_type)
 		end
+		def utiwake_koujyo_on_honten(keijyou_id)
+			ary = []
+			koujyo_all = koujyo_rows(keijyou_id)
+			koujyo_hontenid_list(keijyou_id).each {|honten|
+				koujyo_honten = find_row_nums(0, honten)
+				ary << utiwake(koujyo_all & koujyo_honten, "nomal")
+			}
+			ary
+		end
 		def utiwake(row_nums, utiwake_type)
 			ary = []
 			row_nums.each{|row|
@@ -111,6 +120,20 @@ module Buppan
 			when "nomal"
 				Utiwake.new(ary.last[5], ary[0][1], ary[0][3], ary) 
 			end
+		end
+		def koujyo_hontenid_list(keijyou_id)
+			ary = []
+			list = koujyo_rows(keijyou_id)
+			list.each {|row|
+				data = @rows[row]
+				ary << data[0]
+			}
+			ary.uniq.sort
+		end
+		def koujyo_rows(keijyou_id)
+			list1 = find_row_nums(3, "控除")
+			list2 = find_row_nums(8, keijyou_id)
+			list1 & list2
 		end
 	end
 end
