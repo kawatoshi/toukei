@@ -46,11 +46,13 @@ module Buppan
 		def line(line_data)
 			utiwakeline = Struct.new(:day,
 															 :customer_name, :place,
+															 :code,
 															 :item,
 															 :price, :units,
 															 :sum, :cost)
 			utiwakeline.new(parsedate(line_data[5]),
 											line_data[2], line_data[6],
+											get_code(line_data[2]),
 											line_data[7],
 											decamma(line_data[8]), decamma(line_data[9]),
 											decamma(line_data[10]), decamma(line_data[11]))
@@ -69,6 +71,12 @@ module Buppan
 		end
 		def decamma(str)
 			str.gsub(/,/, '').to_i
+		end
+		def get_code(str)
+			code = str.split
+			if code[0] =~ /\A\d\d\d\d\d\d\Z/
+				code[0]
+			end
 		end
 	end
 
