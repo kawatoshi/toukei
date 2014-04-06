@@ -12,11 +12,12 @@ div.title h1 {
 	margin-bottom: 20px;
 }
 div.title h2 {
-	font-size:14px;
-	margin-left:130px;
-	margin-bottom:5px;
-	width:250px;
-	float:left;
+	font-size: 14px;
+	margin-left: 70px;
+	margin-bottom: 5px;
+	width: 270px;
+	float: left;
+	clear: right;
 }
 body table tr th {
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -36,7 +37,16 @@ table #total {
 .num {
 	text-align: center;
 }
+.signature {
+  float: right;
+  clear: both;
+  margin-right: 40px;
+  margin-bottom: 1px;
+}
+.page_break {
+  page-break-before:always;
+}
 #table-border {
-	border-collapse:collapse;
-	border:2px solid #6A6A6A;
+  border-collapse:collapse;
+  border:2px solid #6A6A6A;
 }
