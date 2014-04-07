@@ -9,7 +9,7 @@ def camma(num)
 end
 cgi = CGI.new
 honten = cgi["honten"]
-table = CSV.read('/var/data/buppan/buppan.csv')
+table = CSV.read('/var/data/buppan/buppan.csv', encoding: "SJIS:UTF-8")
 c = Buppan::BuppanList.new(table)
 u = c.utiwake_with_honten_siten(cgi["honten_code"], cgi["siten"], "nomal")
 erb = ERB.new(File.read('../rhtml/m_utiwake.rhtml'), nil, '-')
