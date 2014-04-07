@@ -35,6 +35,9 @@ module Buppan
 		def total_gain
 			total_price - total_cost
 		end
+		def honten
+			@data.first[0]
+		end
 
 		private
 		def list
