@@ -19,6 +19,15 @@ module Buppan
 		def lines
 			@utiwake_list
 		end
+		def pagenate_lines(first_page_row, other_row)
+			if @utiwake_list.size <= first_page_row -1
+				[] << @utiwake_list
+			else
+				first_page_lines = @utiwake_list.each_slice(first_page_row).first
+				other_lines = @utiwake_list[first_page_row..-1].each_slice(other_row).to_a
+				other_lines.unshift(first_page_lines)
+			end
+		end
 		def getudo
 			"平成#{@bill_month.year - 1988}年#{@bill_month.month}月度"
 		end
