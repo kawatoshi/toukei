@@ -126,7 +126,8 @@ module Buppan
 		def utiwake_with_honten_siten(honten_id, siten_id, utiwake_type)
 			list1 = find_row_nums(0, honten_id)
 			list2 = find_row_nums(1, siten_id)
-			utiwake(list1 & list2, utiwake_type)
+			list3 = find_row_nums(14, '売上')
+			utiwake(list1 & list2 & list3, utiwake_type)
 		end
 		def utiwake_koujyo_on_honten(keijyou_id)
 			ary = []
