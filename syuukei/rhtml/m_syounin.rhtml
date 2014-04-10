@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<title><%= main_title %></title>
+<link rel="stylesheet" href="../css/utiwake.css" type="text/css" />
+</head>
+<div id="contents">
+  <body>
+  <div class="title">
+		<h1><%= u.getudo %>　　<%= u.honten %><%= u.customer %>様　　<%= main_title %></h1>
+		<%- if signature then -%>
+      <div class="signature">
+        <table width="112" border="1" align="center" id="table-border" style="clear:both;">
+          <tr>
+						<th width="56" style="font-size: 10px" scope="col"><%= data["negai"]["sig1"] %></th>
+						<th width="56" style="font-size: 10px" scope="col"><%= data["negai"]["sig2"] %></th>
+          </tr>
+          <tr>
+            <td height="42">&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+		<%- end -%>
+		<h2 style="margin-left:170;">営業所: <%= u.division %></h2>
+    <h2 style="margin-left:70px;">※価格は全て税抜きとなっております</h2>
+  </div>
+	<%- pagenate_u.each_with_index{|page, i| -%>
+		<%- if i == 0 then -%>
+		  <table style="clear:both;" id="table-border" width="660" border="1" align="center">
+		<%- else -%>
+		  <table class="page_break" style="clear:both;" id="table-border" width="660" border="1" align="center">
+		<%- end -%>
+    	<tr id="table-border">
+      	<th width="50" scope="col">交換日</th>
+      	<th width="180" scope="col">売場名</th>
+      	<th width="230" scope="col">品番</th>
+      	<th width="50" scope="col">単価</th>
+      	<th width="42" scope="col">数量</th>
+      	<th width="66" scope="col">金額</th>
+    	</tr>
+			<%- page.each{|line| -%>
+				<tr>
+					<td><%= line.day.strftime("%m/%d") %></td>
+					<td><%= line.place %></td>
+					<td><%= line.item %></td>
+					<td class="yen"><%= camma(line.price) %></td>
+					<td class="num"><%= camma(line.units) %></td>
+					<td class="yen"><%= camma(line.sum) %></td>
+    		</tr>
+			<%- } -%>
+			<%- if pages == i + 1 then -%>
+	    	<tr id="table-border">
+  	    	<td colspan="5">合計(税抜き)</td>
+					<td class="yen"><%= camma(u.total_price) %></td>
+    		</tr>
+			<%- end -%>
+  	</table>
+	<%- } -%>
+  </body>
+</div>
+</html>
