@@ -9,7 +9,7 @@
 <div id="contents">
   <body>
   <div class="title">
-		<h1><%= u.getudo %>　　<%= u.honten %><%= u.customer %>様　　<%= main_title %></h1>
+		<h1><%= u.getudo %><%= u.honten %><%= u.customer %>様　<%= main_title %></h1>
 		<%- if signature then -%>
       <div class="signature">
         <table width="112" border="1" align="center" id="table-border" style="clear:both;">
@@ -24,8 +24,8 @@
         </table>
       </div>
 		<%- end -%>
-		<h2 style="margin-left:170;">営業所: <%= u.division %></h2>
-    <h2 style="margin-left:70px;">※価格は全て税抜きとなっております</h2>
+		<h2 style="margin-left:40px;">営業所: <%= u.division %></h2>
+    <h2 style="margin-left:60px;">※価格は全て税抜きとなっております</h2>
   </div>
 	<%- pagenate_u.each_with_index{|page, i| -%>
 		<%- if i == 0 then -%>
