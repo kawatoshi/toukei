@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 require 'csv'
+require 'bigdecimal'
 
 module Buppan
 	class Utiwake
@@ -35,6 +36,9 @@ module Buppan
 			@utiwake_list.inject(0){|sum, line|
 				sum + line.sum
 			}
+		end
+		def total_tax
+			(BigDecimal(total_price.to_s) * BigDecimal("0.08")).floor
 		end
 		def total_cost
 			@utiwake_list.inject(0){|sum, line|
