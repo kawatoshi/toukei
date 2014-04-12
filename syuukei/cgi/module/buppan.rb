@@ -86,7 +86,7 @@ module Buppan
 		end
 		def get_code(str)
 			code = str.split
-			if code[0] =~ /\A\d\d\d\d\d\d\Z/
+			if code[0] =~ /\A\d{4,6}\Z/
 				code[0]
 			end
 		end
