@@ -40,6 +40,9 @@ module Buppan
 		def total_tax
 			(BigDecimal(total_price.to_s) * BigDecimal("0.08")).floor
 		end
+		def total_price_with_tax
+			total_price + total_tax
+		end
 		def total_cost
 			@utiwake_list.inject(0){|sum, line|
 				sum + (line.units * line.cost)
