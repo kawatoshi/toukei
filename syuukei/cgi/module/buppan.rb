@@ -145,6 +145,15 @@ module Buppan
 			}
 			ary
 		end
+		def utiwake_gaibu_on_honten(keijyou_id)
+			ary = []
+			gaibu_all = gaibu_rows(keijyou_id)
+			gaibu_hontenid_list(keijyou_id).each {|honten|
+				koujyo_honten = find_row_nums(0, honten)
+				ary << utiwake(koujyo_all & koujyo_honten, "nomal")
+			}
+			ary
+		end
 		def utiwake(row_nums, utiwake_type)
 			ary = []
 			row_nums.each{|row|
@@ -167,10 +176,24 @@ module Buppan
 			}
 			ary.uniq.sort
 		end
+		def gaibu_hontenid_list(keijyou_id)
+			ary = []
+			list = gaibu_rows(keijyou_id)
+			list.each {|row|
+				data = @rows[row]
+				ary << data[0]
+			}
+			ary.uniq.sort
+		end
 		def koujyo_rows(keijyou_id)
 			list1 = find_row_nums(3, "控除")
 			list2 = find_row_nums(8, keijyou_id)
 			list1 & list2
+		end
+		def gaibu_rows(keijyou_id)
+			exclusion_list1 = find_row_nums(0, "00001")
+			exclusion_list2 = find_row_nums(3, "控除")
+			list1 = find_row_nums(14, "売上")
 		end
 	end
 end
