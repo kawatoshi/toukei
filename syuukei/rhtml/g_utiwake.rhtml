@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<title><%= data["g_utiwake"]["title"] %></title>
+<link rel="stylesheet" href="../css/utiwake.css" type="text/css" />
+</style>
+</head>
+<div id="contents">
+  <body>
+  <div class="title">
+		<h1><%= utiwake_list[0].getudo %> <%= data["g_utiwake"]["title2"] %></h1>
+  </div>
+	<%- pagenate_contents.each_with_index{|page, i| -%>
+		<%- if i == 0 then -%>
+			<table id="table-border" width="700" border="1"  align="center">
+		<%- else -%>
+			<table class="page_break" id="table-border" width="700" border="1"  align="center">
+		<%- end -%>
+			<tr id="table-border">
+				<th scope="col">出庫日</th>
+				<th scope="col">販売先</th>
+				<th scope="col">品番</th>
+				<th scope="col">単価</th>
+				<th scope="col">数量</th>
+				<th scope="col">金額</th>
+			</tr>
+			<%- page.each{|row| -%>
+				<%= row %>
+			<%- } %>
+		</table>
+	<%- } -%>
+  </body>
+</div>
+</html>
