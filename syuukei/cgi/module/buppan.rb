@@ -149,8 +149,8 @@ module Buppan
 			ary = []
 			gaibu_all = gaibu_rows(keijyou_id)
 			gaibu_hontenid_list(keijyou_id).each {|honten|
-				koujyo_honten = find_row_nums(0, honten)
-				ary << utiwake(koujyo_all & koujyo_honten, "nomal")
+				gaibu_honten = find_row_nums(0, honten)
+				ary << utiwake(gaibu_all & gaibu_honten, "nomal")
 			}
 			ary
 		end
