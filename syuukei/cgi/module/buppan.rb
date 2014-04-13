@@ -191,9 +191,11 @@ module Buppan
 			list1 & list2
 		end
 		def gaibu_rows(keijyou_id)
-			exclusion_list1 = find_row_nums(0, "00001")
+			exclusion_list1 = find_row_nums(0, "000001")
 			exclusion_list2 = find_row_nums(3, "控除")
 			list1 = find_row_nums(14, "売上")
+			list2 = find_row_nums(8, keijyou_id)
+			list1 & list2 - exclusion_list1 - exclusion_list2
 		end
 	end
 end
