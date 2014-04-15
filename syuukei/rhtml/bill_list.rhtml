@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	<title><%= data["bill_list"]["title"] %></title>
+	<link rel="stylesheet" href="../css/utiwake.css" type="text/css" />
+</head>
+<div id="contents">
+<body>
+	<div class="title">
+		<h1><%= m_list.getudo %>　<%= data["bill_list"]["title2"] %></h1>
+		<h2>営業所: <%= m_list.division %></h2>
+	</div>
+	<table id="table-border" width="750" border="1"  align="center">
+		<tr id="table-border">
+			<th scope="col">会社名</th>
+			<th scope="col" colspan="2">店舗名</th>
+			<th scope="col">請求金額</th>
+			<th scope="col">備考</th>
+		</tr>
+		<tr>
+			<td><%= m_list.honten %></td>
+			<td colspan="2"><%= m_list.lines[0].siten_name %></td>
+			<td class="yen"><%= camma(m_list.total_price) %></td>
+			<td></td>
+		</tr>
+		<tr id="table-border">
+			<td colspan="3">合計(税抜き)</td>
+			<td class="yen"><%= camma(m_list.total_price) %></td>
+			<td></td>
+		</tr>
+		<tr id="table-border">
+			<th scope="col">会社名</th>
+			<th scope="col">売場名</th>
+			<th scope="col">テナントコード</th>
+			<th scope="col">請求金額</th>
+			<th scope="col">備考</th>
+		</tr>
+		<%- t_lists.each{|utiwake| -%>
+		<tr>
+			<td><%= utiwake.honten %></td>
+			<td><%= utiwake.lines[0].uriba %></td>
+			<td><%= utiwake.lines[0].code %></td>
+			<td class="yen"><%= camma(utiwake.total_price) %></td>
+			<td></td>
+		</tr>
+		<%- } -%>
+		<tr id="table-border">
+			<td colspan="3">合計(税抜き)</td>
+			<td class="yen"><%= camma(t_lists_total_price) %></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</div>
+</html>
