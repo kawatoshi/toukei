@@ -65,12 +65,14 @@ module Buppan
 		def line(line_data)
 			utiwakeline = Struct.new(:day,
 															 :customer_name, :place,
+															 :siten_name,
 															 :code, :uriba,
 															 :item,
 															 :price, :units,
 															 :sum, :cost)
 			utiwakeline.new(parsedate(line_data[5]),
 											line_data[2], line_data[6],
+											line_data[1],
 											get_code(line_data[2]), get_uriba(line_data[2]),
 											line_data[7],
 											decamma(line_data[8]), decamma(line_data[9]),
@@ -137,7 +139,7 @@ module Buppan
 			utiwake(list1 & list2 & list3, utiwake_type)
 		end
 		def utiwake_koujyo_on_honten(keijyou_id)
-			ary = []
+			ary = UtiwakeList.new
 			koujyo_all = koujyo_rows(keijyou_id)
 			koujyo_hontenid_list(keijyou_id).each {|honten|
 				koujyo_honten = find_row_nums(0, honten)
@@ -146,7 +148,7 @@ module Buppan
 			ary
 		end
 		def utiwake_gaibu_on_honten(keijyou_id)
-			ary = []
+			ary = UtiwakeList.new
 			gaibu_all = gaibu_rows(keijyou_id)
 			gaibu_hontenid_list(keijyou_id).each {|honten|
 				gaibu_honten = find_row_nums(0, honten)
@@ -196,6 +198,17 @@ module Buppan
 			list1 = find_row_nums(14, "売上")
 			list2 = find_row_nums(8, keijyou_id)
 			list1 & list2 - exclusion_list1 - exclusion_list2
+		end
+		class UtiwakeList < Array
+			def total_price
+				self.inject(0){|sum, line| sum + line.total_price}
+			end
+			def total_cost
+				self.inject(0){|sum, line| sum + line.total_cost}
+			end
+			def total_gain
+				self.total_price - self.total_cost
+			end
 		end
 	end
 end
