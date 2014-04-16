@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	<title><%= data["earnings_report"]["title"] %></title>
+	<link rel="stylesheet" href="../css/utiwake.css" type="text/css" />
+</head>
+<div id="contents">
+<body>
+	<div class="title">
+		<h1><%= m_list.getudo %>　<%= data["earnings_report"]["title2"] %></h1>
+		<h2>営業所: <%= m_list.division %></h2>
+	</div>
+	<table id="table-border" width="780" border="1"  align="center">
+		<tr id="table-border">
+			<th scope="col" width="160">会社名</th>
+			<th scope="col" width="210">店舗名</th>
+			<th scope="col" width="70">売上金額</th>
+			<th scope="col" width="70">原価金額</th>
+			<th scope="col" width="70">利益</th>
+			<th scope="col" width="80">請求区分</th>
+			<th scope="col">備考</th>
+		</tr>
+		<tr>
+			<td><%= m_list.honten %></td>
+			<td><%= m_list.lines[0].siten_name %></td>
+			<td class="yen"><%= camma(m_list.total_price) %></td>
+			<td class="yen"><%= camma(m_list.total_cost) %></td>
+			<td class="yen"><%= camma(m_list.total_gain) %></td>
+			<td><%= data["m_div_name"] %></td>
+			<td></td>
+		</tr>
+		<tr id="table-border">
+			<th scope="col">会社名</th>
+			<th scope="col">売場名</th>
+			<th scope="col">売上金額</th>
+			<th scope="col">原価金額</th>
+			<th scope="col">利益</th>
+			<th scope="col">請求区分</th>
+			<th scope="col">税込金額</th>
+		</tr>
+		<%- t_lists.each{|utiwake| -%>
+		<tr>
+			<td><%= utiwake.honten %></td>
+			<td><%= utiwake.lines[0].uriba %></td>
+			<td class="yen"><%= camma(utiwake.total_price) %></td>
+			<td class="yen"><%= camma(utiwake.total_cost) %></td>
+			<td class="yen"><%= camma(utiwake.total_gain) %></td>
+			<td><%= data["t_div_name"] %></td>
+			<td class="yen"><%= camma(utiwake.total_price) %></td>
+		</tr>
+		<%- } -%>
+		<%- g_lists.each{|utiwake| -%>
+		<tr>
+			<td><%= utiwake.honten %></td>
+			<td><%= utiwake.lines[0].uriba %></td>
+			<td></td>
+			<td class="yen"><%= camma(utiwake.total_cost) %></td>
+			<td></td>
+			<td><%= data["g_div_name"] %></td>
+			<td></td>
+		</tr>
+		<%- } -%>
+		<tr id="table-border">
+			<td colspan="2">小計(税抜き)</td>
+			<td class="yen"><%= camma(t_lists.total_price) %></td>
+			<td class="yen"><%= camma(cost_of_t_and_g) %></td>
+			<td class="yen"><%= camma(gain) %></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr id="table-border">
+			<td colspan="2">合計(税抜き)</td>
+			<td class="yen"><%= camma(t_lists.total_price + m_list.total_price) %></td>
+			<td class="yen"><%= camma(cost_of_t_and_g + m_list.total_cost) %></td>
+			<td class="yen"><%= camma(gain + m_list.total_gain) %></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</div>
+</html>
