@@ -25,7 +25,7 @@ buppan = Buppan::BuppanList.new(table)
 utiwake_list = buppan.utiwake_koujyo_on_honten(cgi["keijyou_id"])
 erb = ERB.new(File.read('../rhtml/t_utiwake_contents.rhtml'), nil, '-')
 txt = erb.result(binding)
-pagenate_contents = pagenate_str(txt, first_page_row, other_page_rows)
+pagenate_contents = pagenate_str(txt, data["t_utiwake"]["first_page_rows"], data["t_utiwake"]["other_page_rows"])
 erb = ERB.new(File.read('../rhtml/t_utiwake.rhtml'), nil, '-')
 puts "Content-Type:text/html; charset=utf-8\n\n"
 puts erb.result(binding)
