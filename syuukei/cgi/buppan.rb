@@ -22,6 +22,10 @@ t_lists_total_price = t_lists.total_price
 case cgi["list_name"]
 when "bill_list"
 	erb = ERB.new(File.read('../rhtml/bill_list.rhtml'), nil, '-')
+when "earnings_report"
+	cost_of_t_and_g = t_lists.total_cost + g_lists.total_cost
+	gain = t_lists_total_price - cost_of_t_and_g
+	erb = ERB.new(File.read('../rhtml/earnings_report.rhtml'), nil, '-')
 end
 puts "Content-Type:text/html; charset=utf-8\n\n"
 puts erb.result(binding)
