@@ -14,18 +14,18 @@
   </div>
 	<%- pagenate_contents.each_with_index{|page, i| -%>
 		<%- if i == 0 then -%>
-			<table id="table-border" width="700" border="1"  align="center">
+			<table id="table-border" width="710" border="1"  align="center">
 		<%- else -%>
-			<table class="page_break" id="table-border" width="700" border="1"  align="center">
+			<table class="page_break" id="table-border" width="710" border="1"  align="center">
 		<%- end -%>
 			<tr id="table-border">
-				<th scope="col">交換日</th>
-				<th scope="col" class="tenant-code">テナントコード</th>
-				<th scope="col">売場名</th>
-				<th scope="col">品番</th>
-				<th scope="col">単価</th>
-				<th scope="col">数量</th>
-				<th scope="col">金額</th>
+				<th scope="col" width="55">交換日</th>
+				<th scope="col" width="75"class="tenant-code">テナントコード</th>
+				<th scope="col" width="210">売場名</th>
+				<th scope="col" width="210">品番</th>
+				<th scope="col" width="50">単価</th>
+				<th scope="col" width="40">数量</th>
+				<th scope="col" width="60">金額</th>
 			</tr>
 			<%- page.each{|row| -%>
 				<%= row %>
