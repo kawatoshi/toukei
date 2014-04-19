@@ -1,6 +1,6 @@
 <%- utiwake_list.each {|u| -%>
 	<%- u.lines.each {|line| -%>
-	 <tr><td><%= line.day.strftime("%m/%d") %></td><td class="num"><%= line.code %></td><td><%= line.uriba %></td><td><%= line.item %></td><td class="yen"><%= camma(line.price) %></td><td class="num"><%= camma(line.units) %></td><td class="yen"><%= camma(line.sum) %></td></tr>
+	 <tr><td class="num"><%= line.day.strftime("%m/%d") %></td><td class="num"><%= line.code %></td><td><%= line.uriba %></td><td><%= line.item %></td><td class="yen"><%= camma(line.price) %></td><td class="num"><%= camma(line.units) %></td><td class="yen"><%= camma(line.sum) %></td></tr>
 	<%- } -%>
  <tr><th colspan="3"></th><th colspan="3">小計(税抜き)</th><td class="yen"><%= camma(u.total_price) %></td></tr>
  <tr><th colspan="3"></th><th colspan="3">消費税</th><td class="yen"><%= camma(u.total_tax) %></td></tr>

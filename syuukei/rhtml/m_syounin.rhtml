@@ -43,7 +43,7 @@
     	</tr>
 			<%- page.each{|line| -%>
 				<tr>
-					<td><%= line.day.strftime("%m/%d") %></td>
+					<td class="num"><%= line.day.strftime("%m/%d") %></td>
 					<td><%= line.place %></td>
 					<td><%= line.item %></td>
 					<td class="yen"><%= camma(line.price) %></td>
