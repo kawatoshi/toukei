@@ -30,6 +30,10 @@ td {
 table #total {
 	font-size: 14px;
 }
+.tenant-code {
+	font-size: 08px;
+	text-align: center;
+}
 .yen {
 	text-align: right;
 	padding-right: 5px;
