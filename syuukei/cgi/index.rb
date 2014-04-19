@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 require 'yaml'
 require 'erb'
+require 'cgi'
 
 data = YAML.load_file('/var/data/buppan/config/config.yaml')
+cgi = CGI.new
 erb = ERB.new(File.read('../rhtml/index.rhtml'), nil, '-')
 
 def get_param(content, m_list_one)
@@ -15,7 +17,16 @@ def get_param(content, m_list_one)
 	}
 	"#{content["command"]}#{ary.join("&")}"
 end
+def get_filename(filename)
+	case filename
+	when /\A\d{6}/
+		"&filename=#{filename}"
+	else
+		""
+	end
+end
 title = data["main"]["title"]
+filename = cgi["filename"]
 puts "Content-Type:text/html; charset=utf-8\n\n"
 puts erb.result(binding)
 #p get_param(data["main"]["contents"][2], data["m_list"][0])

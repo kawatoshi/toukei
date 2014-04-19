@@ -9,7 +9,7 @@
 	<%- data["main"]["contents"].each {|line| -%>
 		<h2><%= line["name"] -%></h2>
 		<%- data["m_list"].each {|list| -%>
-			<%= "<a href=\"#{get_param(line, list)}\">#{list["name"]}</a>" -%>
+			<%= "<a href=\"#{get_param(line, list)}#{get_filename(filename)}\">#{list["name"]}</a>" -%>
 		<%- } -%>
 		</p>
 	<%- } -%>

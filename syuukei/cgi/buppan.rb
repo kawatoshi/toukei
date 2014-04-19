@@ -9,7 +9,11 @@ def camma(num)
 	num.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse
 end
 def get_table(filename)
-	CSV.read('/var/data/buppan/buppan.csv', encoding: "SJIS:UTF-8")
+	if filename then
+		CSV.read("/var/data/buppan/old/buppan_#{filename}.csv", encoding: "SJIS:UTF-8")
+	else
+		CSV.read('/var/data/buppan/buppan.csv', encoding: "SJIS:UTF-8")
+	end
 end
 def pagenate_str(txt, first_page_row, other_row)
 	lines = txt.split("\n")
@@ -23,7 +27,12 @@ def pagenate_str(txt, first_page_row, other_row)
 end
 cgi = CGI.new
 data = YAML.load_file('/var/data/buppan/config/config.yaml')
-table = get_table(nil)
+case cgi["filename"]
+when /\A\d{6}/
+	table = get_table(cgi["filename"])
+else
+	table = get_table(nil)
+end
 c = Buppan::BuppanList.new(table)
 case cgi["list_name"]
 when "m_syounin", "m_utiwake"
