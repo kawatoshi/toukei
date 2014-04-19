@@ -52,7 +52,7 @@ module Buppan
 			total_price - total_cost
 		end
 		def honten
-			@data.first[0].gsub(/株式会社/, '')
+			@data.first[0].gsub(/株式会社/, '').gsub(/\A　/, '')
 		end
 
 		private
