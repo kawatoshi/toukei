@@ -26,6 +26,19 @@ data = YAML.load_file('/var/data/buppan/config/config.yaml')
 table = get_table(nil)
 c = Buppan::BuppanList.new(table)
 case cgi["list_name"]
+when "m_syounin", "m_utiwake"
+	case cgi["list_name"]
+	when "m_syounin"
+		main_title = data["negai"]["title"]
+		signature = true
+	else
+		main_title = data["m_utiwake"]["title"]
+		signature = false
+	end
+	u = c.utiwake_with_honten_siten(data["honten_code"], cgi["siten"], "nomal")
+	pagenate_u = u.pagenate_lines(data["first_page_rows"], data["other_page_rows"])
+	pages = pagenate_u.size
+	erb = ERB.new(File.read('../rhtml/m_syounin.rhtml'), nil, '-')
 when "t_utiwake"
 	utiwake_list = c.utiwake_koujyo_on_honten(cgi["keijyou_id"])
 	erb = ERB.new(File.read('../rhtml/t_utiwake_contents.rhtml'), nil, '-')
