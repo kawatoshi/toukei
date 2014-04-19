@@ -48,7 +48,7 @@
 			<td class="yen"><%= camma(utiwake.total_cost) %></td>
 			<td class="yen"><%= camma(utiwake.total_gain) %></td>
 			<td class="num"><%= data["t_div_name"] %></td>
-			<td class="yen"><%= camma(utiwake.total_price) %></td>
+			<td class="yen"><%= camma(utiwake.total_price_with_tax) %></td>
 		</tr>
 		<%- } -%>
 		<%- g_lists.each{|utiwake| -%>
