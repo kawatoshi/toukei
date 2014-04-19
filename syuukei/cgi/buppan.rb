@@ -32,6 +32,12 @@ when "t_utiwake"
 	txt = erb.result(binding)
 	pagenate_contents = pagenate_str(txt, data["t_utiwake"]["first_page_rows"], data["t_utiwake"]["other_page_rows"])
 	erb = ERB.new(File.read('../rhtml/t_utiwake.rhtml'), nil, '-')
+when "g_utiwake"
+	utiwake_list = c.utiwake_gaibu_on_honten(cgi["keijyou_id"])
+	erb = ERB.new(File.read('../rhtml/g_utiwake_contents.rhtml'), nil, '-')
+	txt = erb.result(binding)
+	pagenate_contents = pagenate_str(txt, data["t_utiwake"]["first_page_rows"], data["t_utiwake"]["other_page_rows"])
+	erb = ERB.new(File.read('../rhtml/g_utiwake.rhtml'), nil, '-')
 when "bill_list"
 	m_list = c.utiwake_with_honten_siten(data["honten_code"], cgi["siten"], "nomal")
 	t_lists = c.utiwake_koujyo_on_honten(cgi["keijyou_id"])
