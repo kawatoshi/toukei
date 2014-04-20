@@ -64,6 +64,7 @@ module Buppan
 		end
 		def line(line_data)
 			utiwakeline = Struct.new(:day,
+															 :honten_id,
 															 :customer_name, :place,
 															 :siten_name,
 															 :code, :uriba,
@@ -71,6 +72,7 @@ module Buppan
 															 :price, :units,
 															 :sum, :cost)
 			utiwakeline.new(parsedate(line_data[5]),
+											line_data[12],
 											line_data[2], line_data[6],
 											line_data[1],
 											get_code(line_data[2]), get_uriba(line_data[2]),
@@ -162,7 +164,7 @@ module Buppan
 				data = @rows[row]
 				ary << [data[2], data[3], data[5], data[9], data[11],
 						 data[18], data[20], data[22], data[23],
-						 data[24], data[26],data[36]]
+						 data[24], data[26],data[36],data[0]]
 			}
 			case utiwake_type
 			when "nomal"

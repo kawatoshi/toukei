@@ -66,14 +66,21 @@ when "bill_list"
 	g_lists = c.utiwake_gaibu_on_honten(cgi["keijyou_id"])
 	t_lists_total_price = t_lists.total_price
 	erb = ERB.new(File.read('../rhtml/bill_list.rhtml'), nil, '-')
-when "earnings_report"
+when "earnings_report", "keijyou"
 	m_list = c.utiwake_with_honten_siten(data["honten_code"], cgi["siten"], "nomal")
 	t_lists = c.utiwake_koujyo_on_honten(cgi["keijyou_id"])
 	g_lists = c.utiwake_gaibu_on_honten(cgi["keijyou_id"])
 	t_lists_total_price = t_lists.total_price
 	cost_of_t_and_g = t_lists.total_cost + g_lists.total_cost
 	gain = t_lists_total_price - cost_of_t_and_g
-	erb = ERB.new(File.read('../rhtml/earnings_report.rhtml'), nil, '-')
+	case cgi["list_name"]
+	when "earnings_report"
+		erb = ERB.new(File.read('../rhtml/earnings_report.rhtml'), nil, '-')
+	when "keijyou"
+		m_koumoku = "#{m_list.honten} #{m_list.lines[0].siten_name} #{data["keijyou_report"]["m_koumoku"]}"
+		honten_id = m_list.lines[0].honten_id
+		erb = ERB.new(File.read('../rhtml/keijyou_report.rhtml'), nil, '-')
+	end
 end
 puts "Content-Type:text/html; charset=utf-8\n\n"
 puts erb.result(binding)
