@@ -10,29 +10,29 @@
 <body>
 	<div class="title">
 		<h1><%= m_list.getudo %>　<%= data["bill_list"]["title2"] %></h1>
-		<h2 style="margin-left:30px;">営業所: <%= m_list.division %></h2>
+		<h2 style="margin-left:30px;">■税抜き</h2>
 	</div>
 	<table id="table-border" width="750" border="1"  align="center">
 		<tr id="table-border">
 			<th scope="col" width="160">会社名</th>
-			<th scope="col" colspan="2">店舗名</th>
-			<th scope="col">請求金額</th>
+			<th scope="col" width="274">店舗名</th>
+			<th scope="col" width="90">請求金額</th>
 			<th scope="col">備考</th>
 		</tr>
 		<tr>
 			<td><%= m_list.honten %></td>
-			<td colspan="2"><%= m_list.lines[0].siten_name %></td>
+			<td><%= m_list.lines[0].siten_name %></td>
 			<td class="yen"><%= camma(m_list.total_price) %></td>
 			<td></td>
 		</tr>
+	</table>
+	<div class="title">
+		<h2 style="margin-left:30px;">■テナント、他  税込み</h2>
+	</div>
+	<table id="table-border" width="750" border="1"  align="center">
 		<tr id="table-border">
-			<td colspan="3">合計(税抜き)</td>
-			<td class="yen"><%= camma(m_list.total_price) %></td>
-			<td></td>
-		</tr>
-		<tr id="table-border">
-			<th scope="col">会社名</th>
-			<th scope="col" width="290">売場名</th>
+			<th scope="col" width="160">会社名</th>
+			<th scope="col" width="200">売場名</th>
 			<th scope="col" width="70" class="tenant-code">テナントコード</th>
 			<th scope="col" width="90">請求金額</th>
 			<th scope="col">備考</th>
