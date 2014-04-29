@@ -205,6 +205,9 @@ module Buppan
 			def total_price
 				self.inject(0){|sum, line| sum + line.total_price}
 			end
+			def total_price_with_tax
+				self.inject(0){|sum, line| sum + line.total_price_with_tax}
+			end
 			def total_cost
 				self.inject(0){|sum, line| sum + line.total_cost}
 			end
