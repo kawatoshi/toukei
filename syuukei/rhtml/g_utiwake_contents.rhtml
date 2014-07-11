@@ -1,3 +1,5 @@
+<%# coding: UTF-8 %>
+
 <%- utiwake_list.each {|u| -%>
 	<%- u.lines.each {|line| -%>
 	 <tr><td><%= line.day.strftime("%m/%d") %></td><td><%= line.uriba %></td><td><%= line.item %></td><td class="yen"><%= camma(line.price) %></td><td class="num"><%= camma(line.units) %></td><td class="yen"><%= camma(line.sum) %></td></tr>
