@@ -31,6 +31,10 @@
 			<%- page.each{|row| -%>
 				<%= row %>
 			<%- } %>
+			<tr id="table-border">
+				<td colspan="4">合計(税抜き)</td>
+				<td colspan="2" class="yen"><%= camma(utiwake_list.total_price) %></td>
+			</tr>
 		</table>
 	<%- } -%>
   </body>
