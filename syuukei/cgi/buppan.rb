@@ -67,7 +67,12 @@ when "bill_list"
 	t_lists_total_price = t_lists.total_price
 	erb = ERB.new(File.read('../rhtml/bill_list.rhtml'), nil, '-')
 when "earnings_report", "keijyou"
-	m_list = c.utiwake_with_honten_siten(data["honten_code"], cgi["siten"], "nomal")
+	case cgi["with_honten"]
+	when "no"
+		m_list = nil
+	else
+			m_list = c.utiwake_with_honten_siten(data["honten_code"], cgi["siten"], "nomal")
+	end
 	t_lists = c.utiwake_koujyo_on_honten(cgi["keijyou_id"])
 	g_lists = c.utiwake_gaibu_on_honten(cgi["keijyou_id"])
 	t_lists_total_price = t_lists.total_price
