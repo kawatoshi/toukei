@@ -101,13 +101,19 @@ module Buppan
 				code[0]
 			end
 		end
+		def slice_comment(str)
+			ans = str.sub(/発行不要/,'')
+			ans = ans.sub(/控除不要/,'')
+			ans = ans.sub(/請求書/,'')
+			ans.split.join(' ')
+		end
 		def get_uriba(str)
 			if get_code(str)
 				ans = str.split
 				ans.delete_at(0)
-				ans.join(" ")
+				slice_comment(ans.join(" "))
 			else
-				str
+				slice_comment(str)
 			end
 		end
 	end
