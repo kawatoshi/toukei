@@ -15,5 +15,12 @@
 		<%- } -%>
 		</p>
 	<%- } -%>
+	<%- data["main"]["contents2"].each {|line| -%>
+		<h2><%= line["name"] -%></h2>
+		<%- data["m_list2"].each {|list| -%>
+			<%= "<a href=\"#{get_param(line, list)}#{get_filename(filename)}\">#{list["name"]}</a>" -%>
+		<%- } -%>
+		</p>
+	<%- } -%>
 </body>
 </html>

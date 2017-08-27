@@ -1,0 +1,37 @@
+<%# coding: UTF-8 %>
+
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	<title><%= data["keijyou_report"]["title"] %></title>
+	<link rel="stylesheet" href="css/utiwake.css" type="text/css" />
+</head>
+<div id="contents">
+<body>
+	<div class="title">
+		<h1><%= g_lists.last.getudo %>　<%= data["keijyou_report"]["title2"] %></h1>
+		<h2 style="margin-left:20px;">営業所: <%= g_lists.last.division %></h2>
+	</div>
+	<table id="table-border" width="780" border="1"  align="center">
+		<tr id="table-border">
+			<th scope="col">顧客id</th>
+			<th scope="col">会社名</th>
+			<th scope="col">検収計上金額(内税)</th>
+			<th scope="col">原価計上金額</th>
+			<th scope="col">請求区分</th>
+		</tr>
+		<tr>
+			<td>800000</td>
+			<td>仕入れ</td>
+			<td class="yen">0</td>
+			<td class="yen"><%= camma(g_lists.total_cost) %></td>
+			<td>請求</td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</div>
+</html>
+

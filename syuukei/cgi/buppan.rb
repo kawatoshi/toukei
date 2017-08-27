@@ -86,6 +86,9 @@ when "earnings_report", "keijyou"
 		honten_id = m_list.lines[0].honten_id
 		erb = ERB.new(File.read('../rhtml/keijyou_report.rhtml'), nil, '-')
 	end
+when "keijyou2"
+	g_lists = c.utiwake_gaibu_on_honten(cgi["keijyou_id"])
+	erb = ERB.new(File.read('../rhtml/keijyou_report2.rhtml'), nil, '-')
 end
 puts "Content-Type:text/html; charset=utf-8\n\n"
 puts erb.result(binding)
